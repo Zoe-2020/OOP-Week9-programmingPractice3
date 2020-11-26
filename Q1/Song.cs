@@ -11,23 +11,24 @@ namespace Q1
         public double Duration { get; set; }
         public Genre MusicGenre { get; set; }
 
-       public Song(string title,string artist,double duration, Genre musicGene)
+       public Song(string artist, string title, double duration, Genre musicGene)
         {
-            title = Title;
-            artist = Artist;
-            duration = Duration ;
-            musicGene = MusicGenre;
+            
+             Artist = artist ;
+             Title = title;
+             Duration = duration  ;
+            MusicGenre = musicGene ;
         }
 
-        public Song(string title, string artist) : this(title,artist, 0, Genre.Other) { }
+        public Song(string artist,string title) : this(artist, title, 0, Genre.Other) { }
 
         public Song() : this("unknown", "unknown") { }
 
         public override string ToString()
         {
-            return string.Format($"{Title}{Artist}{Duration}{MusicGenre}");
+            return string.Format($"{Artist}{Title}{Duration}{MusicGenre}");
         }
 
     }
-    public enum Genre { Rock,Pop,Dance,Other }
+    public enum Genre { Rock,Pop,Dance,Other}
 }
