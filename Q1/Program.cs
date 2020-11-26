@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Q1
 {
@@ -24,12 +25,19 @@ namespace Q1
 
             Display(playlist);
 
-            
+            playlist.Sort();
+
+            Display(playlist);
+
+            Shuffle(playlist);
+
+            Display(playlist);
+
 
         }
         private static void Display(List<Song> playlist)
         {
-            Console.WriteLine("{0,25}{1,25}{2,25}{3,25}","Artist","Title","Duration","Music Genre");
+            Console.WriteLine("\n {0,25}{1,25}{2,25}{3,25}","Artist","Title","Duration","Music Genre");
 
             foreach (Song song in playlist)
             {
@@ -37,6 +45,19 @@ namespace Q1
             }
 
 
+        }
+        private static void Shuffle(List<Song> playlist)
+        {
+            Random rand = new Random();
+            Song temp = new Song();
+            int cardNumber;
+            for (int i = 0; i < playlist.Count; i++)
+            {
+                cardNumber = rand.Next(playlist.Count);
+                temp = playlist.ElementAt(i);
+                playlist[i] = playlist.ElementAt(cardNumber);
+                playlist[cardNumber] = temp;
+            }
         }
     }
 }

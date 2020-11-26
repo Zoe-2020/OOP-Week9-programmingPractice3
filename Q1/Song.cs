@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Q1
 {
-    class Song
+    class Song : IComparable
     {
         public string Title { get; set; }
         public string Artist { get; set; }
@@ -29,6 +29,20 @@ namespace Q1
             return string.Format($"{Artist}{Title}{Duration}{MusicGenre}");
         }
 
+        public int CompareTo(object other)
+        {
+            Song that = (Song)other;
+
+            int returnValue = this.Artist.CompareTo(that.Artist);
+
+            if (returnValue == 0)
+            {
+                returnValue = this.Title.CompareTo(that.Title);
+            }
+            return returnValue;
+
+
+        }
     }
     public enum Genre { Rock,Pop,Dance,Other}
 }
